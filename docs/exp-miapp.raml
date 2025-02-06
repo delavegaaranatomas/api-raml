@@ -1,4 +1,37 @@
 #%RAML 1.0
-title: Mi API
+title: Sales and Purchases API
 version: v1
 baseUri: http://api.miapp.com/{version}
+mediaType: application/json
+
+types:
+  Order:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      description:
+        type: string
+      price:
+        type: number
+      stock:
+        type: integer
+
+/orders:
+  get:
+    description: Retrieve the list of orders
+    responses:
+      200:
+        body:
+          application/json:
+            type: array
+            items: Order
+  post:
+    description: Create a new order
+    responses:
+      200:
+        body:
+          application/json:
+            type: Order   
