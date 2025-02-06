@@ -18,6 +18,19 @@ types:
         type: number
       stock:
         type: integer
+  Product:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      description:
+        type: string
+      price:
+        type: number
+      stock:
+        type: integer        
 
 /orders:
   get:
@@ -35,3 +48,22 @@ types:
         body:
           application/json:
             type: Order   
+/products:
+  get:
+    description: Retrieve the list of products
+    responses:
+      200:
+        body:
+          application/json:
+            type: array
+            items: Product
+  post:
+    description: Create a new product
+    body:
+      application/json:
+        type: Product
+    responses:
+      201:
+        body:
+          application/json:
+            type: Product
